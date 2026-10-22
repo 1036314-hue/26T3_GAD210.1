@@ -1,8 +1,10 @@
 using TMPro;
 using UnityEngine;
 
+
 public class TextboxInput : MonoBehaviour
 {
+    
     [SerializeField]
     private string inputText;
 
@@ -12,15 +14,20 @@ public class TextboxInput : MonoBehaviour
     [SerializeField]
     private TMP_Text reactionTextBox;
 
-    public void TextBoxInput(string input)
+    [SerializeField]
+    private TMP_InputField inputField;
+
+    [SerializeField]
+    private TextBoxMovement playerMovement;
+
+    
+    public void TextBoxInputFunction(string input)
     {
-        inputText = input;
-        DisplayReactionToInput();
+        inputText = input.ToLower();
+        playerMovement.inputText = inputText;
+        reactionTextBox.text = "Input: " + inputText;
+        inputField.text = "";
+
     }
 
-    private void DisplayReactionToInput()
-    {
-        reactionTextBox.text = "Input: " + inputText;
-        reactionGroup.SetActive(true);
-    }
 }
